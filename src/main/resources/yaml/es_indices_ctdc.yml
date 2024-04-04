@@ -1037,8 +1037,8 @@ Indices:
       MATCH (spec:specimen)-[:of_subject]->(sub:subject)
       optional MATCH (study:study)<-[:belongs_to]-(sub)
       optional MATCH (sub)<-[:of_subject]-(diag:diagnosis)
-      WITH COLLECT(diag.stage_of_disease) as stage,COLLECT(diag.ctep_disease_term) as ctep
-      WITH stage,ctep, stage + ctep as list
+      WITH COLLECT(diag.stage_of_disease) as stage,COLLECT(diag.ctep_disease_term) as ctep,COLLECT(Distinct(sub.subject_id)) as subjectID,COLLECT(Distinct(spec.specimen_id)) as specimenID
+      WITH stage,ctep, stage + ctep + subjectID + specimenID as list
       UNWIND list as autocomplete_list
       RETURN distinct
       autocomplete_list"
