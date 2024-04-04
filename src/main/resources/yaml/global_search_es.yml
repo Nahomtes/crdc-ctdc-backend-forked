@@ -270,5 +270,23 @@ queries:
           fragmentSize: 1
         result:
           type: int_total_count
+      - name: gs_list
+        index:
+          - gs_list
+        filter:
+          type: global
+          searches:
+            - field: autocomplete_list
+              type: wildcard
+          typedSearch:
+            - field: autocomplete_list
+              type: term
+              option: integer
+        highlight:
+          fields:
+            - autocomplete_list
+          fragmentSize: 1
+        result:
+          type: global
 
-      
+    

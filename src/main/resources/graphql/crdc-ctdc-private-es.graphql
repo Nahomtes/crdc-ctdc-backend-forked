@@ -14,7 +14,14 @@ type GlobalSearchResult {
     model_count: Int
     model: [GS_Model]
 
+    gs_list: [GS_list]
+ 
 }
+
+type GS_list {
+    autocomplete_list: String
+}
+
 type PublicGlobalSearchResult {
 
     about_count: Int
