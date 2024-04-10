@@ -85,7 +85,7 @@ queries:
           - tab_biospecimens
         filter:
           type: aggregation
-          selectedField: specimen_id
+          selectedField: parent_specimen_id
         result:
           type: int
           method: count_bucket_keys
