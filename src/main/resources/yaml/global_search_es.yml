@@ -92,8 +92,11 @@ queries:
           - tab_biospecimens
         filter:
           type: global
-          defaultSortField: specimen_id
+          defaultSortField: parent_specimen_id
           searches:
+            - field: parent_specimen_id
+              type: wildcard
+              caseInsensitive: true
             - field: specimen_id
               type: wildcard
               caseInsensitive: true
@@ -132,8 +135,11 @@ queries:
           - tab_biospecimens
         filter:
           type: global
-          defaultSortField: specimen_id
+          defaultSortField: parent_specimen_id
           searches:
+            - field: parent_specimen_id
+              type: wildcard
+              caseInsensitive: true
             - field: specimen_id
               type: wildcard
               caseInsensitive: true
