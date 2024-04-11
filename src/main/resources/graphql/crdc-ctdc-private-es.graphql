@@ -63,6 +63,7 @@ type GS_Subject {
 type GS_Biospecimen {
     type: String
     study_short_name: String
+    parent_specimen_id: String
     specimen_id: String
     subject_id: String
     ctep_disease_term: String
