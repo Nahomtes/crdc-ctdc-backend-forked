@@ -101,6 +101,29 @@ Indices:
         type: keyword
       list_type:
         type: keyword
+      study_data_files:
+        type: nested
+        properties:
+          data_file_uuid:
+            type: keyword
+          data_file_name:
+            type: keyword
+          data_file_type:
+            type: keyword
+          data_file_description:
+            type: keyword
+          data_file_format:
+            type: keyword
+          data_file_size:
+            type: keyword
+          data_file_checksum_value:
+            type: keyword
+          data_file_checksum_type:
+            type: keyword
+          data_file_compression_status:
+            type: keyword
+          data_file_location:
+            type: keyword
       data_files:
         type: nested
         properties:
@@ -127,10 +150,23 @@ Indices:
 
     # Cypher query will be used to retrieve data from Neo4j, and index into Elasticsearch
     cypher_query: "
-      MATCH (s:study)<-[:belongs_to]-(sb:subject)
+       MATCH (s:study)<-[:belongs_to]-(sb:subject)
+       MATCH (s:study)<-[:associated_with]-(study_file:data_file)
       optional MATCH (sb:subject)<-[*..2]-(df:data_file)
       RETURN DISTINCT 
         s.study_short_name as study_short_name,
+        COLLECT(DISTINCT{
+                    data_file_uuid: study_file.data_file_uuid,
+                    data_file_name: study_file.data_file_name,
+                    data_file_type: study_file.data_file_type,
+                    data_file_description: study_file.data_file_description,
+                    data_file_format: study_file.data_file_format,
+                    data_file_size: study_file.data_file_size,
+                    data_file_checksum_value: study_file.data_file_checksum_value,
+                    data_file_checksum_type: study_file.data_file_checksum_type,
+                    data_file_compression_status: study_file.data_file_compression_status,
+                    data_file_location: study_file.data_file_location
+                }) AS study_data_files,
         COLLECT(DISTINCT{
                     data_file_uuid: df.data_file_uuid,
                     data_file_name: df.data_file_name,

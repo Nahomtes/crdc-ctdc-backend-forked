@@ -155,6 +155,7 @@ type DataFile {
 type StudyDataFile {
   study_short_name: String
   list_type: [String]
+  study_data_files: [DataFile]
   data_files: [DataFile]
 }
 
