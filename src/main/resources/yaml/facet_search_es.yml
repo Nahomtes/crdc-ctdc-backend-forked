@@ -26,9 +26,10 @@ queries:
         filter:
           type: sub_aggregation
           selectedField: assessment_timepoint
-          subAggSelectedField: specimen_type
+          subAggSelectedField: parent_specimen_type
           nestedPath: biospecimen_info
           nestedParameters:
+            - parent_specimen_type,
             - anatomical_collection_site,
             - specimen_type,
             - tissue_category,

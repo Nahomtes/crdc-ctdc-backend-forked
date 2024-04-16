@@ -695,6 +695,8 @@ Indices:
       biospecimen_info:
         type: nested
         properties:
+          parent_specimen_id:
+            type: keyword
           specimen_id:
             type: keyword
           anatomical_collection_site:
@@ -766,6 +768,7 @@ Indices:
           data_file_location: df.data_file_location
         }) AS data_files,
         COLLECT(DISTINCT{
+          parent_specimen_id: spec.parent_specimen_id,
           specimen_id: spec.specimen_id,
           anatomical_collection_site: spec.anatomical_collection_site,
           specimen_type: spec.specimen_type,
