@@ -77,7 +77,7 @@ queries:
           - widgets_facets_counts
         filter:
           type: aggregation
-          selectedField: targeted_therapy_id
+          selectedField: targeted_therapy
         result:
           type: int
           method: count_bucket_keys
