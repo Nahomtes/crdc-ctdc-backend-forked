@@ -372,7 +372,7 @@ Indices:
          as dataFileByType
         MATCH (df:data_file) with dataFileByType , count(df) as dataFileCount
         MATCH (sb:subject) WITH count(sb) as subjectcount,dataFileByType,dataFileCount
-        MATCH (target:targeted_therapy) WITH target,subjectcount,dataFileByType,dataFileCount
+        MATCH (target:targeted_therapy) WHERE target.targeted_therapy <> '' WITH target,subjectcount,dataFileByType,dataFileCount
         MATCH (untargeted:non_targeted_therapy) WITH count(DISTINCT(untargeted.targeted_therapy)) as untargetedTherapyCount ,subjectcount,target,dataFileByType,dataFileCount
         WITH subjectcount,count(distinct(target.targeted_therapy)) as targetTherapyCount,dataFileByType,dataFileCount,untargetedTherapyCount
 
