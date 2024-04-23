@@ -598,7 +598,7 @@ Indices:
       optional MATCH (sb)<-[:of_subject]-(spec:specimen)
       optional MATCH (sb)<-[:of_subject]-(demo:demographic)
       optional MATCH (sb)<-[:of_subject]-(exp:exposure)
-      optional MATCH (sb)<-[:of_subject]-(tt:targeted_therapy)
+      optional MATCH (sb)<-[:of_subject]-(tt:targeted_therapy)  WHERE tt.targeted_therapy <> ''
       RETURN DISTINCT
       'participants' AS type,
       sb.subject_id AS subject_id,
