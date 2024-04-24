@@ -74,7 +74,7 @@ queries:
           method: count_bucket_keys
       - name: numberOfTargetedTherapies
         index:
-          - tab_participants
+          - therapy_count
         filter:
           type: aggregation
           selectedField: targeted_therapy
