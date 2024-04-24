@@ -254,7 +254,7 @@ queries:
           type: group_count
       - name: participantCountByTargetedTherapy
         index:
-          - therapy_count
+          - widgets_facets_counts
         filter:
           type: aggregation
           selectedField: targeted_therapy
@@ -262,7 +262,7 @@ queries:
           type: group_count
       - name: filterParticipantCountByTargetedTherapy
         index:
-          - therapy_count
+          - widgets_facets_counts
         filter:
           type: aggregation
           selectedField: targeted_therapy
