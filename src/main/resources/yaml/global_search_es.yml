@@ -226,10 +226,10 @@ queries:
               type: term
             - field: property_description
               type: wildcard
-            - field: node_name
+            - field: node
               type: term
           typedSearch:
-            - field: property_required
+            - field: node
               type: match
               option: boolean
         highlight:
@@ -238,7 +238,7 @@ queries:
             - property_description
             - property_type
             - property_required
-            - node_name
+            - node
           fragmentSize: 1
         result:
           type: global_multi_models
@@ -294,5 +294,26 @@ queries:
           fragmentSize: 1
         result:
           type: global
+      - name: model_search
+        index:
+          - model_nodes
+        filter:
+          type: global
+          searches:
+            - field: node
+              type: wildcard
+            - field: node_kw
+              type: term
+          typedSearch:
+            - field: node
+              type: match
+              option: boolean
+        highlight:
+          fields:
+            - node
+            - node_kw
+          fragmentSize: 1
+        result:
+          type: global_multi_models
 
-    
+      

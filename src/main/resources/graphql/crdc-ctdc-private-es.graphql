@@ -12,10 +12,15 @@ type GlobalSearchResult {
   model: [GS_Model]
 
   gs_list: [GS_list]
+  model_search: [GS_Model_Search]
 }
 
 type GS_list {
   autocomplete_list: String
+}
+type GS_Model_Search
+{
+  node: String
 }
 
 type PublicGlobalSearchResult {
