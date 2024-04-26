@@ -1080,7 +1080,9 @@ Indices:
       WITH stage,ctep, stage + ctep + subjectID + specimenID as list
       UNWIND list as autocomplete_list
       RETURN distinct
-      autocomplete_list"
+      
+      autocomplete_list
+      "
   - index_name: therapy_count
     type: neo4j
     # type mapping for each property of the index
