@@ -461,6 +461,8 @@ type QueryType {
     specimen_type: [String] = []
     tissue_category: [String] = []
     assessment_timepoint: [String] = []
+    parent_specimen_id: [String] = []
+    specimen_id: [String] = []
 
     data_file_type: [String] = []
     data_file_format: [String] = []
@@ -502,6 +504,7 @@ type QueryType {
   biospecimen_data_files(
     subject_id: [String] = []
     specimen_id: [String] = []
+    parent_specimen_id: [String] = []
     ctep_disease_term: [String] = []
     stage_of_disease: [String] = []
     tumor_grade: [String] = []
@@ -521,7 +524,7 @@ type QueryType {
     data_file_format: [String] = []
     data_file_uuid: [String] = []
 
-    order_by: String = "specimen_id"
+    order_by: String = "parent_specimen_id"
     sort_direction: String = "ASC"
     first: Int = 10
     offset: Int = 0
