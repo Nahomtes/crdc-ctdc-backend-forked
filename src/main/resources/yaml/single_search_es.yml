@@ -73,7 +73,7 @@ queries:
       type: pagination
       defaultSortField: data_file_name
       alternativeSortField:
-        specimen_id: specimen_id
+        parent_specimen_id: parent_specimen_id
         subject_id: subject_id
     result:
       type: object_array
@@ -118,7 +118,7 @@ queries:
       type: pagination
       defaultSortField: data_file_uuid
       alternativeSortField:
-        specimen_id: specimen_id
+        parent_specimen_id: parent_specimen_id
         subject_id: subject_id
     result:
       type: object_array

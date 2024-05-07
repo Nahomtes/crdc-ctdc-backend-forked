@@ -1000,6 +1000,8 @@ Indices:
         type: keyword
       specimen_id:
         type: keyword
+      parent_specimen_id:
+        type: keyword
       ctep_disease_term:
         type: keyword
       stage_of_disease:
@@ -1047,6 +1049,7 @@ Indices:
         f.data_file_description AS data_file_description,
       
         spec.specimen_id AS specimen_id,
+        spec.parent_specimen_id AS parent_specimen_id,
         sub.subject_id AS subject_id,
       
         diag.ctep_disease_term AS ctep_disease_term,
