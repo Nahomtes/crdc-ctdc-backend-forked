@@ -31,7 +31,6 @@ queries:
           nestedParameters:
             - parent_specimen_type,
             - anatomical_collection_site,
-            - specimen_type,
             - tissue_category,
             - assessment_timepoint
         result:
@@ -279,7 +278,7 @@ queries:
           nestedParameters:
             - specimen_id
             - anatomical_collection_site
-            - specimen_type
+            - parent_specimen_type
             - tissue_category
             - assessment_timepoint
         result:
@@ -295,7 +294,7 @@ queries:
           nestedParameters:
             - specimen_id
             - anatomical_collection_site
-            - specimen_type
+            - parent_specimen_type
             - tissue_category
             - assessment_timepoint
         result:
@@ -305,12 +304,12 @@ queries:
           - tab_biospecimens
         filter:
           type: nested
-          selectedField: specimen_type
+          selectedField: parent_specimen_type
           nestedPath: biospecimen_info
           nestedParameters:
             - specimen_id
             - anatomical_collection_site
-            - specimen_type
+            - parent_specimen_type
             - tissue_category
             - assessment_timepoint
         result:
@@ -321,12 +320,12 @@ queries:
         filter:
           type: nested
           ignoreSelectedField: true
-          selectedField: specimen_type
+          selectedField: parent_specimen_type
           nestedPath: biospecimen_info
           nestedParameters:
             - specimen_id
             - anatomical_collection_site
-            - specimen_type
+            - parent_specimen_type
             - tissue_category
             - assessment_timepoint
         result:
@@ -341,7 +340,7 @@ queries:
           nestedParameters:
             - specimen_id
             - anatomical_collection_site
-            - specimen_type
+            - parent_specimen_type
             - tissue_category
             - assessment_timepoint
         result:
@@ -357,7 +356,7 @@ queries:
           nestedParameters:
             - specimen_id
             - anatomical_collection_site
-            - specimen_type
+            - parent_specimen_type
             - tissue_category
             - assessment_timepoint
         result:
@@ -372,7 +371,7 @@ queries:
           nestedParameters:
             - specimen_id
             - anatomical_collection_site
-            - specimen_type
+            - parent_specimen_type
             - tissue_category
             - assessment_timepoint
         result:
@@ -388,7 +387,7 @@ queries:
           nestedParameters:
             - specimen_id
             - anatomical_collection_site
-            - specimen_type
+            - parent_specimen_type
             - tissue_category
             - assessment_timepoint
         result:

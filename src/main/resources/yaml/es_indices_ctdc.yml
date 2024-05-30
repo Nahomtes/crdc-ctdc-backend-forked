@@ -223,8 +223,6 @@ Indices:
             type: keyword
           parent_specimen_type:
             type: keyword
-          specimen_type:
-            type: keyword
           tissue_category:
             type: keyword
           assessment_timepoint:
@@ -233,7 +231,7 @@ Indices:
       MATCH (s:study)<-[:belongs_to]-(subject)<-[:of_subject]-(sp:specimen)
       WITH COUNT(sp) AS sample_count
       MATCH (s:study)<-[:belongs_to]-(subject)<-[:of_subject]-(sp:specimen)
-      WITH DISTINCT sp.specimen_type AS biospecimen_type, COUNT(sp) AS count1, sample_count
+      WITH DISTINCT sp.parent_specimen_type AS biospecimen_type, COUNT(sp) AS count1, sample_count
 
       MATCH (s:study)<-[:belongs_to]-(subject)<-[:of_subject]-(sp:specimen)
       WITH DISTINCT sp.assessment_timepoint AS assessment_timepoint, COUNT(sp) AS count2, biospecimen_type, count1, sample_count
@@ -252,7 +250,6 @@ Indices:
             type_of_tissue:  sp.type_of_tissue,
             anatomical_collection_site: sp.anatomical_collection_site,
             parent_specimen_type: sp.parent_specimen_type,
-            specimen_type: sp.specimen_type,
             tissue_category: sp.tissue_category,
             assessment_timepoint: sp.assessment_timepoint
             }) as specimen,
@@ -432,8 +429,6 @@ Indices:
         type: keyword
       anatomical_collection_site:
         type: keyword
-      specimen_type:
-        type: keyword
       tissue_category:
         type: keyword
       assessment_timepoint:
@@ -454,8 +449,6 @@ Indices:
           specimen_id:
             type: keyword
           anatomical_collection_site:
-            type: keyword
-          specimen_type:
             type: keyword
           tissue_category:
             type: keyword
@@ -498,7 +491,6 @@ Indices:
       COLLECT(DISTINCT target.targeted_therapy) as targeted_therapy,
       COLLECT(DISTINCT target.targeted_therapy_id) as targeted_therapy_id,
       COLLECT(DISTINCT spec.anatomical_collection_site) AS anatomical_collection_site,
-      COLLECT(DISTINCT spec.specimen_type) AS specimen_type,
       COLLECT(DISTINCT spec.tissue_category) AS tissue_category,
       COLLECT(DISTINCT spec.assessment_timepoint) AS assessment_timepoint,
       COLLECT(DISTINCT spec.specimen_id) AS specimen_id,
@@ -509,7 +501,6 @@ Indices:
       COLLECT(DISTINCT{
         specimen_id: spec.specimen_id,
         anatomical_collection_site: spec.anatomical_collection_site,
-        specimen_type: spec.specimen_type,
         tissue_category: spec.tissue_category,
         assessment_timepoint: spec.assessment_timepoint
       }) AS biospecimen_info,
@@ -579,7 +570,7 @@ Indices:
         type: keyword
       anatomical_collection_site:
         type: keyword
-      specimen_type:
+      parent_specimen_type:
         type: keyword
       tissue_category:
         type: keyword
@@ -630,7 +621,7 @@ Indices:
 
       COLLECT(DISTINCT(spec.specimen_id)) AS specimen_id,
       COLLECT(DISTINCT(spec.anatomical_collection_site)) AS anatomical_collection_site,
-      COLLECT(DISTINCT(spec.specimen_type)) AS specimen_type,
+      COLLECT(DISTINCT(spec.parent_specimen_type)) AS parent_specimen_type,
       COLLECT(DISTINCT(spec.tissue_category)) AS tissue_category,
       COLLECT(DISTINCT(spec.assessment_timepoint)) AS assessment_timepoint,
 
@@ -662,8 +653,6 @@ Indices:
       parent_specimen_type:
         type: keyword
       anatomical_collection_site:
-        type: keyword
-      specimen_type:
         type: keyword
       tissue_category:
         type: keyword
@@ -701,7 +690,7 @@ Indices:
             type: keyword
           anatomical_collection_site:
             type: keyword
-          specimen_type:
+          parent_specimen_type:
             type: keyword
           tissue_category:
             type: keyword
@@ -709,7 +698,6 @@ Indices:
             type: keyword
       data_file_uuid:
         type: keyword
-
       tumor_grade:
         type: keyword
       sex:
@@ -751,7 +739,6 @@ Indices:
         spec.parent_specimen_id AS parent_specimen_id,
         spec.parent_specimen_type AS parent_specimen_type,
         spec.anatomical_collection_site AS anatomical_collection_site,
-        spec.specimen_type AS specimen_type,
         spec.tissue_category AS tissue_category,
         spec.assessment_timepoint AS assessment_timepoint,
         study.study_short_name as study_short_name,
@@ -771,7 +758,7 @@ Indices:
           parent_specimen_id: spec.parent_specimen_id,
           specimen_id: spec.specimen_id,
           anatomical_collection_site: spec.anatomical_collection_site,
-          specimen_type: spec.specimen_type,
+          parent_specimen_type: spec.parent_specimen_type,
           tissue_category: spec.tissue_category,
           assessment_timepoint: spec.assessment_timepoint
       }) AS biospecimen_info,
@@ -848,7 +835,7 @@ Indices:
         type: keyword
       anatomical_collection_site:
         type: keyword
-      specimen_type:
+      parent_specimen_type:
         type: keyword
       tissue_category:
         type: keyword
@@ -911,7 +898,7 @@ Indices:
         COLLECT(DISTINCT(tt.targeted_therapy)) AS targeted_therapy,
         
         spec.anatomical_collection_site AS anatomical_collection_site,
-        spec.specimen_type AS specimen_type,
+        spec.parent_specimen_type AS parent_specimen_type,
         spec.tissue_category AS tissue_category,
         spec.assessment_timepoint AS assessment_timepoint,
         spec.parent_specimen_id AS parent_specimen_id,
@@ -966,7 +953,7 @@ Indices:
         COLLECT(DISTINCT(tt.targeted_therapy)) AS targeted_therapy,
         
         spec.anatomical_collection_site AS anatomical_collection_site,
-        spec.specimen_type AS specimen_type,
+        spec.parent_specimen_type AS parent_specimen_type,
         spec.tissue_category AS tissue_category,
         spec.assessment_timepoint AS assessment_timepoint,
         spec.parent_specimen_id AS parent_specimen_id,
@@ -1024,7 +1011,7 @@ Indices:
       # Facets section: Biospecimens
       anatomical_collection_site:
         type: keyword
-      specimen_type:
+      parent_specimen_type:
         type: keyword
       tissue_category:
         type: keyword
@@ -1065,7 +1052,7 @@ Indices:
         COLLECT(DISTINCT(tt.targeted_therapy)) AS targeted_therapy,
         
         spec.anatomical_collection_site AS anatomical_collection_site,
-        spec.specimen_type AS specimen_type,
+        spec.parent_specimen_type AS parent_specimen_type,
         spec.tissue_category AS tissue_category,
         spec.assessment_timepoint AS assessment_timepoint"
     #lists for GS hashmap

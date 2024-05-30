@@ -67,7 +67,6 @@ type GS_Biospecimen {
   specimen_id: String
   subject_id: String
   ctep_disease_term: String
-  specimen_type: String
   parent_specimen_type: String
   tissue_category: String
   anatomical_collection_site: String
@@ -177,7 +176,6 @@ type Specimen {
   type_of_tissue: String
   anatomical_collection_site: String
   parent_specimen_type: String
-  specimen_type: String
   tissue_category: String
   assessment_timepoint: String
 }
@@ -292,7 +290,7 @@ type FileOverview {
   carcinogen_exposure: String
   targeted_therapy: String
   anatomical_collection_site: String
-  specimen_type: String
+  parent_specimen_type: String
   tissue_category: String
   assessment_timepoint: String
   primary_disease_site: String
