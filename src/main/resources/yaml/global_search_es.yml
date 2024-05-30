@@ -109,7 +109,7 @@ queries:
             - field: ctep_disease_term
               type: wildcard
               caseInsensitive: true
-            - field: specimen_type
+            - field: parent_specimen_type
               type: wildcard
               caseInsensitive: true
             - field: parent_specimen_type
@@ -152,7 +152,7 @@ queries:
             - field: ctep_disease_term
               type: wildcard
               caseInsensitive: true
-            - field: specimen_type
+            - field: parent_specimen_type
               type: wildcard
               caseInsensitive: true
             - field: parent_specimen_type
