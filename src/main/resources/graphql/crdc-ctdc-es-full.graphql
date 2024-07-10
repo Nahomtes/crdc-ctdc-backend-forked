@@ -163,7 +163,7 @@ type data_file {
     data_file_type: String
     data_file_description : String
     data_file_format : String
-    data_file_size : String
+    data_file_size : Float
     data_file_checksum_value : String
     data_file_checksum_type : String
     data_file_compression_status : String
