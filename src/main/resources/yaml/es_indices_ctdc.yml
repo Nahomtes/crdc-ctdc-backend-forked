@@ -115,7 +115,7 @@ Indices:
           data_file_format:
             type: keyword
           data_file_size:
-            type: keyword
+            type: double
           data_file_checksum_value:
             type: keyword
           data_file_checksum_type:
@@ -138,7 +138,7 @@ Indices:
           data_file_format:
             type: keyword
           data_file_size:
-            type: keyword
+            type: double
           data_file_checksum_value:
             type: keyword
           data_file_checksum_type:
@@ -254,9 +254,7 @@ Indices:
           tissue_category: sp.tissue_category,
           assessment_timepoint: sp.assessment_timepoint
         }) as specimen,
-        sample_count
-    "
-    
+        sample_count"
   - index_name: study_diagnosis
     type: neo4j
     # type mapping for each property of the index
@@ -556,7 +554,7 @@ Indices:
           data_file_format:
             type: keyword
           data_file_size:
-            type: keyword
+            type: double
           data_file_checksum_value:
             type: keyword
           data_file_checksum_type:
@@ -673,7 +671,7 @@ Indices:
           data_file_format:
             type: keyword
           data_file_size:
-            type: keyword
+            type: double
           data_file_checksum_value:
             type: keyword
           data_file_checksum_type:
@@ -791,7 +789,7 @@ Indices:
       data_file_type:
         type: keyword
       data_file_size:
-        type: keyword
+        type: double
       data_file_description:
         type: keyword
       data_file_checksum_value:
