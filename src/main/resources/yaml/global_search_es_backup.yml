@@ -1,6 +1,25 @@
 queries:
-  - name: publicGlobalSearch
+  - name: globalSearch
     returnFields:
+      - name: subjects
+        index:
+          - subjects
+        filter:
+          type: global
+          defaultSortField: subject_id_num
+          searches:
+            - field: subject_id
+              type: wildcard
+              caseInsensitive: true
+            - field: diagnosis_gs
+              type: wildcard
+              caseInsensitive: true
+          typedSearch:
+            - field: age_at_index
+              type: term
+              option: integer
+        result:
+          type: global
       - name: subject_count
         index:
           - subjects
@@ -20,6 +39,22 @@ queries:
               option: integer
         result:
           type: int_total_count
+
+      - name: samples
+        index:
+          - samples
+        filter:
+          type: global
+          defaultSortField: subject_id_num
+          searches:
+            - field: sample_id_gs
+              type: wildcard
+            - field: sample_anatomic_site_gs
+              type: wildcard
+            - field: tissue_type_gs
+              type: wildcard
+        result:
+          type: global
       - name: sample_count
         index:
           - samples
@@ -66,6 +101,22 @@ queries:
               type: wildcard
         result:
           type: int_total_count
+
+      - name: studies
+        index:
+          - studies
+        filter:
+          type: global
+          defaultSortField: study_id_kw
+          searches:
+            - field: study_id
+              type: wildcard
+            - field: study_name
+              type: wildcard
+            - field: study_type
+              type: wildcard
+        result:
+          type: global
       - name: study_count
         index:
           - studies
@@ -81,6 +132,23 @@ queries:
               type: wildcard
         result:
           type: int_total_count
+
+      - name: files
+        index:
+          - files
+        filter:
+          type: global
+          defaultSortField: file_id_num
+          searches:
+            - field: file_id_gs
+              type: wildcard
+            - field: file_name
+              type: wildcard
+              caseInsensitive: true
+            - field: file_format_gs
+              type: wildcard
+        result:
+          type: global
       - name: file_count
         index:
           - files
@@ -97,6 +165,7 @@ queries:
               type: wildcard
         result:
           type: int_total_count
+
       # About Page
       # Always Set offset= 0 and default-size=10000
       - name: about_page
@@ -145,7 +214,7 @@ queries:
             - field: value.keyword
               type: wildcard
             - field: property_name
-              type: wildcard
+              type: term
             - field: property_type
               type: term
             - field: property_description
@@ -167,6 +236,7 @@ queries:
           fragmentSize: 1
         result:
           type: global_multi_models
+
       - name: model_count
         index:
           - model_properties
@@ -178,7 +248,7 @@ queries:
             - field: value.keyword
               type: wildcard
             - field: property_name
-              type: wildcard
+              type: term
             - field: property_type
               type: term
             - field: property_description

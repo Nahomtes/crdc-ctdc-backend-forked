@@ -1,111 +1,124 @@
 queries:
-  - name: findSubjectIdsInList
+  - name: studyByStudyShortName
     index:
-      - subjects
+      - study
     filter:
       type: default
-      caseInsensitive: true
+      caseInsensitive: false
       ignoreIfEmpty:
-        - subject_ids
+        - study_short_name
     result:
       type: object_array
-  - name: filesInList
+  - name: studyDiagnosisByStudyShortName
     index:
-      - files
+      - study_diagnosis
     filter:
-      type: pagination
-      defaultSortField: file_name
+      type: default
+      caseInsensitive: false
       ignoreIfEmpty:
-        - file_ids
+        - study_short_name
     result:
       type: object_array
-  - name: sampleOverview
+  - name: StudySpecimenByStudyShortName
     index:
-      - samples
+      - study_specimen
+    filter:
+      type: default
+      caseInsensitive: false
+      ignoreIfEmpty:
+        - study_short_name
+    result:
+      type: object_array
+  - name: StudyDataFileByStudyShortName
+    index:
+      - study_data_file
+    filter:
+      type: default
+      caseInsensitive: false
+      ignoreIfEmpty:
+        - study_short_name
+    result:
+      type: object_array
+  - name: getHomePage
+    index:
+      - home_page
+    filter:
+      type: default
+    result:
+      type: object_array
+  - name: participantOverview
+    index:
+      - tab_participants
     filter:
       type: pagination
-      defaultSortField: sample_id_num
+      defaultSortField: subject_id
       alternativeSortField:
-        sample_id: sample_id_num
-        subject_id: subject_id_num
-      rangeFilterFields:
-        - age_at_index
+        subject_id: subject_id
+    result:
+      type: object_array
+  - name: biospecimenOverview
+    index:
+      - tab_biospecimens
+    filter:
+      type: pagination
+      defaultSortField: specimen_id
+      alternativeSortField:
+        subject_id: specimen_id
     result:
       type: object_array
   - name: fileOverview
     index:
-      - files
+      - tab_data_files
     filter:
       type: pagination
-      defaultSortField: file_name
+      defaultSortField: data_file_name
       alternativeSortField:
-        sample_id: sample_id_num
-        subject_id: subject_id_num
-      rangeFilterFields:
-        - age_at_index
+        parent_specimen_id: parent_specimen_id
+        subject_id: subject_id
     result:
       type: object_array
-  - name: subjectOverview
+  - name: filesInList # Support Cart Table
     index:
-      - subjects
+      - tab_data_files
     filter:
       type: pagination
-      defaultSortField: subject_id_num
-      alternativeSortField:
-        subject_id: subject_id_num
-      rangeFilterFields:
-        - age_at_index
+      defaultSortField: data_file_name
+      ignoreIfEmpty:
+        - data_file_uuid
     result:
       type: object_array
-  - name: fileIDsFromList
+  - name: fileIDsFromList # Support adding selected files into Cart
     index:
-      - files
+      - tab_data_files
     filter:
       type: default
-      caseInsensitive: true
-      selectedField: file_ids
+      # caseInsensitive: true
+      selectedField: data_file_uuid
       ignoreIfEmpty:
-        - subject_ids
-        - sample_ids
-        - file_names
+        - specimen_id
+        - data_file_uuid
+        - data_file_name
     result:
       type: str_array
-  - name: subjectsInList
+  - name: participant_data_files
     index:
-      - subjects
+      - tab_data_files
     filter:
-#      extraFilters:
-#        diagnosis:
-#          - Medullary Carcinoma
-#        tumor_size:
-#          - (2,3]
-      type: default
-      caseInsensitive: true
-      selectedField: subject_ids
+      type: pagination
+      defaultSortField: data_file_uuid
+      alternativeSortField:
+        specimen_id: specimen_id
+        subject_id: subject_id
     result:
       type: object_array
-  - name: filesOfSubjects
+  - name: biospecimen_data_files
     index:
-      - files
+      - biospecimen_data_file
     filter:
-      type: default
-      caseInsensitive: true
-      selectedField: subject_id
-    result:
-      type: object_array
-  - name: fileIdsFromFileName
-    index:
-      - files
-    filter:
-      type: default
-      caseInsensitive: true
-    result:
-      type: object_array
-  - name: fileIdsFromFileNameDesc
-    index:
-      - files
-    filter:
-      type: default
-      caseInsensitive: true
+      type: pagination
+      defaultSortField: data_file_uuid
+      alternativeSortField:
+        parent_specimen_id: parent_specimen_id
+        subject_id: subject_id
     result:
       type: object_array
