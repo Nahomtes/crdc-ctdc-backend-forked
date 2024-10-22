@@ -336,7 +336,8 @@ type SearchResult {
   dataFileCountByDataFileType: [GroupCount]
   dataFileCountByDataFileFormat: [GroupCount]
   participantCountByStageOfDisease: [GroupCount]
-
+  participantCountByTargetedTherapyString: [GroupCount]
+  
   filterParticipantCountByCtepDiseaseTerm: [GroupCount]
   filterParticipantCountBySnomedDiseaseCode: [GroupCount]
   filterParticipantCountByTumorGrade: [GroupCount]
@@ -351,7 +352,7 @@ type SearchResult {
   filterSpecimenCountBySpecimenType: [GroupCount]
   filterParticipantCountByAssessmentTimepoint: [GroupCount]
   filterParticipantCountByStageOfDisease: [GroupCount]
-
+  filterParticipantCountByTargetedTherapyString: [GroupCount]
   filterDataFileCountByDataFileType: [GroupCount]
   filterDataFileCountByDataFileFormat: [GroupCount]
 }
