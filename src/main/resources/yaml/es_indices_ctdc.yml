@@ -474,7 +474,7 @@ Indices:
       optional MATCH (target:targeted_therapy)-[:of_subject]->(sb)
       WITH COLLECT(distinct target.targeted_therapy) as array,sb,study
       with apoc.coll.sort(array) as array,sb,study
-      with apoc.text.join(array,'') as array,sb,study
+      with apoc.text.join(array,'|') as array,sb,study
       optional MATCH (spec:specimen)-[:of_subject]->(sb)
       optional MATCH (sb)<-[*..2]-(data_file:data_file)
       optional MATCH (demo:demographic)-[:of_subject]->(sb)
@@ -601,7 +601,7 @@ Indices:
       optional MATCH (target:targeted_therapy)-[:of_subject]->(sb)
       WITH COLLECT(distinct target.targeted_therapy) as array,sb,study
       with apoc.coll.sort(array) as array,sb,study
-      with apoc.text.join(array,'') as array,sb,study
+      with apoc.text.join(array,'|') as array,sb,study
       optional MATCH (sb:subject)<-[*..2]-(df:data_file)
       optional MATCH (sb)<-[:of_subject]-(diag:diagnosis)
       optional MATCH (sb)<-[:of_subject]-(spec:specimen)
@@ -749,7 +749,7 @@ Indices:
       optional MATCH (target:targeted_therapy)-[:of_subject]->(sub)
       WITH COLLECT(distinct target.targeted_therapy) as array,sub,spec
       with apoc.coll.sort(array) as array,sub,spec
-      with apoc.text.join(array,'') as array,sub,spec
+      with apoc.text.join(array,'|') as array,sub,spec
       optional MATCH (study:study)<-[:belongs_to]-(sub)
       optional MATCH (sub)<-[:of_subject]-(diag:diagnosis)
       optional MATCH (sub)<-[:of_subject]-(demo:demographic)
@@ -892,7 +892,7 @@ Indices:
       optional MATCH (target:targeted_therapy)-[:of_subject]->(sub)
       WITH COLLECT(distinct target.targeted_therapy) as array,sub,f
       with apoc.coll.sort(array) as array,sub,f
-      with apoc.text.join(array,'') as array,sub,f
+      with apoc.text.join(array,'|') as array,sub,f
       optional MATCH (f:data_file)-[:associated_with]->(spec:specimen)
       optional MATCH (sub)<-[:of_subject]-(diag:diagnosis)
       optional MATCH (sub)<-[:of_subject]-(demo:demographic)
@@ -953,7 +953,7 @@ Indices:
       optional MATCH (target:targeted_therapy)-[:of_subject]->(sub)
       WITH COLLECT(distinct target.targeted_therapy) as array,sub,f
       with apoc.coll.sort(array) as array,sub,f
-      with apoc.text.join(array,'') as array,sub,f
+      with apoc.text.join(array,'|') as array,sub,f
       optional MATCH (f:data_file)-[:associated_with]->(spec:specimen)
       optional MATCH (sub)<-[:of_subject]-(diag:diagnosis)
       optional MATCH (sub)<-[:of_subject]-(demo:demographic)
@@ -1071,7 +1071,7 @@ Indices:
       optional MATCH (target:targeted_therapy)-[:of_subject]->(sub)
       WITH COLLECT(distinct target.targeted_therapy) as array,sub,f
       with apoc.coll.sort(array) as array,sub,f
-      with apoc.text.join(array,'') as array,sub,f
+      with apoc.text.join(array,'|') as array,sub,f
       optional MATCH (f:data_file)-[:associated_with]->(study:study)
       optional MATCH (f:data_file)-[:associated_with]->(spec:specimen)
       MATCH (sub)<-[:of_subject]-(diag:diagnosis)
@@ -1208,7 +1208,7 @@ Indices:
       optional MATCH (target:targeted_therapy)-[:of_subject]->(sb)
       WITH COLLECT(distinct target.targeted_therapy) as array,sb,study
       with apoc.coll.sort(array) as array,sb,study
-      with apoc.text.join(array,'') as array,sb,study
+      with apoc.text.join(array,'|') as array,sb,study
       optional MATCH (spec:specimen)-[:of_subject]->(sb)
       optional MATCH (sb)<-[*..2]-(data_file:data_file)
       optional MATCH (demo:demographic)-[:of_subject]->(sb)
