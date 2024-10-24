@@ -424,6 +424,8 @@ Indices:
         type: keyword
       targeted_therapy:
         type: keyword
+      primary_diagnosis_disease_group:
+        type: keyword
       targeted_therapy_id:
         type: keyword
       anatomical_collection_site:
@@ -478,6 +480,7 @@ Indices:
       sb.subject_id as subject_id,
       COLLECT(DISTINCT study.study_short_name) as study_short_name,
       COLLECT(DISTINCT diag.ctep_disease_term) as ctep_disease_term,
+      COLLECT(DISTINCT diag.primary_diagnosis_disease_group) as primary_diagnosis_disease_group,
       COLLECT(DISTINCT diag.snomed_disease_code) as snomed_disease_code, 
       COLLECT(DISTINCT diag.tumor_grade) as tumor_grade,
       COLLECT(DISTINCT diag.stage_of_disease) as stage_of_disease,
@@ -521,6 +524,8 @@ Indices:
       study_short_name:
         type: keyword
       ctep_disease_term:
+        type: keyword
+      primary_diagnosis_disease_group:
         type: keyword
       stage_of_disease:
         type: keyword
@@ -594,6 +599,7 @@ Indices:
       sb.subject_id AS subject_id,
       study.study_short_name as study_short_name,
       diag.ctep_disease_term AS ctep_disease_term,
+      diag.primary_diagnosis_disease_group as primary_diagnosis_disease_group,
       diag.stage_of_disease AS stage_of_disease,
       diag.tumor_grade AS tumor_grade,
       demo.age_at_enrollment as age_at_enrollment,
@@ -640,6 +646,8 @@ Indices:
       study_short_name:
         type: keyword
       ctep_disease_term:
+        type: keyword
+      primary_diagnosis_disease_group:
         type: keyword
       stage_of_disease:
         type: keyword
@@ -734,6 +742,7 @@ Indices:
         diag.ctep_disease_term AS ctep_disease_term,
         diag.stage_of_disease AS stage_of_disease,
         diag.primary_disease_site AS primary_disease_site,
+        diag.primary_diagnosis_disease_group as primary_diagnosis_disease_group,
         spec.specimen_id AS specimen_id,
         spec.parent_specimen_id AS parent_specimen_id,
         spec.parent_specimen_type AS parent_specimen_type,
@@ -808,6 +817,8 @@ Indices:
         type: keyword
       ctep_disease_term:
         type: keyword
+      primary_diagnosis_disease_group:
+        type: keyword
       meddra_disease_code:
         type: keyword
       histology:
@@ -880,7 +891,7 @@ Indices:
         sub.subject_id AS subject_id,
       
         diag.ctep_disease_term AS ctep_disease_term,
-        
+        diag.primary_diagnosis_disease_group as primary_diagnosis_disease_group,
         diag.stage_of_disease AS stage_of_disease,
         diag.tumor_grade AS tumor_grade,
         diag.primary_disease_site as primary_disease_site,
@@ -938,6 +949,7 @@ Indices:
         diag.tumor_grade AS tumor_grade,
         diag.primary_disease_site as primary_disease_site,
         diag.ctep_disease_term as ctep_disease_term,
+        diag.primary_diagnosis_disease_group as primary_diagnosis_disease_group,
         diag.meddra_disease_code as meddra_disease_code,
         diag.histology as histology,
 
@@ -990,6 +1002,8 @@ Indices:
         type: keyword
       ctep_disease_term:
         type: keyword
+      primary_diagnosis_disease_group:
+        type: keyword
       stage_of_disease:
         type: keyword
       tumor_grade:
@@ -1039,7 +1053,7 @@ Indices:
         sub.subject_id AS subject_id,
       
         diag.ctep_disease_term AS ctep_disease_term,
-      
+        diag.primary_diagnosis_disease_group as primary_diagnosis_disease_group,
         diag.stage_of_disease AS stage_of_disease,
         diag.tumor_grade AS tumor_grade,
         demo.sex AS sex,
@@ -1081,6 +1095,8 @@ Indices:
       study_short_name:
         type: keyword
       ctep_disease_term:
+        type: keyword
+      primary_diagnosis_disease_group:
         type: keyword
       snomed_disease_code:
         type: keyword
@@ -1159,6 +1175,7 @@ Indices:
       sb.subject_id as subject_id,
       COLLECT(DISTINCT study.study_short_name) as study_short_name,
       COLLECT(DISTINCT diag.ctep_disease_term) as ctep_disease_term,
+      COLLECT(DISTINCT diag.primary_diagnosis_disease_group) as primary_diagnosis_disease_group,
       COLLECT(DISTINCT diag.snomed_disease_code) as snomed_disease_code, 
       COLLECT(DISTINCT diag.tumor_grade) as tumor_grade,
       COLLECT(DISTINCT diag.stage_of_disease) as stage_of_disease,
@@ -1251,6 +1268,3 @@ Indices:
         type: keyword
       value_kw:
         type: keyword
-  
-
- 
