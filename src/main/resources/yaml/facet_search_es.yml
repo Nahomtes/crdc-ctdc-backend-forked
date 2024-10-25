@@ -273,7 +273,7 @@ queries:
           - widgets_facets_counts
         filter:
           type: aggregation
-          selectedField: targeted_string
+          selectedField: targeted_therapy_string
         result:
           type: group_count
       - name: filterParticipantCountByTargetedTherapyString
@@ -281,7 +281,7 @@ queries:
           - widgets_facets_counts
         filter:
           type: aggregation
-          selectedField: targeted_string
+          selectedField: targeted_therapy_string
           ignoreSelectedField: true
         result:
           type: group_count
