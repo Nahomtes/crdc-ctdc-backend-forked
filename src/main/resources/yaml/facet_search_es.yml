@@ -268,7 +268,7 @@ queries:
           ignoreSelectedField: true
         result:
           type: group_count
-      - name: participantCountByTargetedTherapyString
+      - name: participantCountBySingleTargetedTherapyCombination
         index:
           - widgets_facets_counts
         filter:
@@ -276,7 +276,24 @@ queries:
           selectedField: targeted_therapy_string
         result:
           type: group_count
-      - name: filterParticipantCountByTargetedTherapyString
+      - name: filterParticipantCountBySingleTargetedTherapyCombination
+        index:
+          - widgets_facets_counts
+        filter:
+          type: aggregation
+          selectedField: targeted_therapy_string
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: participantCountBySingleTargetedTherapyCombinationForFacet
+        index:
+          - widgets_facets_counts
+        filter:
+          type: aggregation
+          selectedField: targeted_therapy_string
+        result:
+          type: group_count
+      - name: filterParticipantCountBySingleTargetedTherapyCombinationForFacet
         index:
           - widgets_facets_counts
         filter:
