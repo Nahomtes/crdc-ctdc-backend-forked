@@ -285,6 +285,40 @@ queries:
           ignoreSelectedField: true
         result:
           type: group_count
+      - name: participantCountBySingleTargetedTherapyCombination
+        index:
+          - widgets_facets_counts
+        filter:
+          type: aggregation
+          selectedField: targeted_therapy_string
+        result:
+          type: group_count
+      - name: filterParticipantCountBySingleTargetedTherapyCombination
+        index:
+          - widgets_facets_counts
+        filter:
+          type: aggregation
+          selectedField: targeted_therapy_string
+          ignoreSelectedField: true
+        result:
+          type: group_count
+      - name: participantCountBySingleTargetedTherapyCombinationForFacet
+        index:
+          - widgets_facets_counts
+        filter:
+          type: aggregation
+          selectedField: targeted_therapy_string
+        result:
+          type: group_count
+      - name: filterParticipantCountBySingleTargetedTherapyCombinationForFacet
+        index:
+          - widgets_facets_counts
+        filter:
+          type: aggregation
+          selectedField: targeted_therapy_string
+          ignoreSelectedField: true
+        result:
+          type: group_count
       - name: specimenCountByAnatomicalCollectionSite
         index:
           - tab_biospecimens
