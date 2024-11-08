@@ -232,6 +232,7 @@ type GroupCount {
 type ParticipantOverview {
   subject_id: String
   ctep_disease_term: String
+  primary_diagnosis_disease_group: String
   stage_of_disease: String
   tumor_grade: String
   age_at_enrollment: Float # TODO: Check type Int
@@ -249,6 +250,7 @@ type ParticipantOverview {
 type BiospecimenOverview {
   subject_id: String
   ctep_disease_term: String
+  primary_diagnosis_disease_group: String
   stage_of_disease: String
   primary_disease_site: String
   specimen_id: String
@@ -276,6 +278,7 @@ type FileOverview {
   data_file_location: String
   data_file_compression_status: String
   ctep_disease_term: String
+  primary_diagnosis_disease_group: String
   meddra_disease_code: String
   histology: String
   subject_id: String
@@ -308,6 +311,7 @@ type FileParticipant {
   data_file_description: String
   specimen_id: String
   ctep_disease_term: String
+  primary_diagnosis_disease_group: String
   data_file_uuid: String # For Adding Files into Cart
 }
 
@@ -334,6 +338,7 @@ type SearchResult {
   participantCountByTargetedTherapy: [GroupCount]
   participantCountBySingleTargetedTherapyCombination: [GroupCount]
   participantCountBySingleTargetedTherapyCombinationForFacet: [GroupCount]
+  participantCountByPrimaryDiagnosisDiseaseGroup: [GroupCount]
   specimenCountByAnatomicalCollectionSite: [GroupCount]
   specimenCountByTissueCategory: [GroupCount]
   specimenCountBySpecimenType: [GroupCount]
@@ -341,6 +346,7 @@ type SearchResult {
   dataFileCountByDataFileType: [GroupCount]
   dataFileCountByDataFileFormat: [GroupCount]
   participantCountByStageOfDisease: [GroupCount]
+  
   filterParticipantCountByCtepDiseaseTerm: [GroupCount]
   filterParticipantCountBySnomedDiseaseCode: [GroupCount]
   filterParticipantCountByTumorGrade: [GroupCount]
@@ -352,6 +358,7 @@ type SearchResult {
   filterParticipantCountByTargetedTherapy: [GroupCount]
   filterParticipantCountBySingleTargetedTherapyCombination: [GroupCount]
   filterParticipantCountBySingleTargetedTherapyCombinationForFacet: [GroupCount]
+  filterParticipantCountByPrimaryDiagnosisDiseaseGroup: [GroupCount]
   filterSpecimenCountByAnatomicalCollectionSite: [GroupCount]
   filterSpecimenCountByTissueCategory: [GroupCount]
   filterSpecimenCountBySpecimenType: [GroupCount]
@@ -397,6 +404,7 @@ type QueryType {
   participantOverview(
     subject_id: [String] = []
     ctep_disease_term: [String] = []
+    primary_diagnosis_disease_group: [String] = []
     stage_of_disease: [String] = []
     tumor_grade: [String] = []
     sex: [String] = []
@@ -425,6 +433,7 @@ type QueryType {
     subject_id: [String] = []
     specimen_id: [String] = []
     ctep_disease_term: [String] = []
+    primary_diagnosis_disease_group: [String] = []
     stage_of_disease: [String] = []
     tumor_grade: [String] = []
     sex: [String] = []
@@ -453,6 +462,7 @@ type QueryType {
   fileOverview(
     subject_id: [String] = []
     ctep_disease_term: [String] = []
+    primary_diagnosis_disease_group: [String] = []
     stage_of_disease: [String] = []
     tumor_grade: [String] = []
     sex: [String] = []
@@ -482,6 +492,7 @@ type QueryType {
   participant_data_files(
     subject_id: [String] = []
     ctep_disease_term: [String] = []
+    primary_diagnosis_disease_group: [String] = []
     stage_of_disease: [String] = []
     tumor_grade: [String] = []
     sex: [String] = []
@@ -512,6 +523,7 @@ type QueryType {
     specimen_id: [String] = []
     parent_specimen_id: [String] = []
     ctep_disease_term: [String] = []
+    primary_diagnosis_disease_group: [String] = []
     stage_of_disease: [String] = []
     tumor_grade: [String] = []
     sex: [String] = []
@@ -546,6 +558,7 @@ type QueryType {
     race: [String] = []
     ethnicity: [String] = []
 
+    primary_diagnosis_disease_group: [String] = []
     carcinogen_exposure: [String] = []
     targeted_therapy: [String] = []
     targeted_therapy_string: [String] = []
